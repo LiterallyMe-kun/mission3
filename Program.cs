@@ -20,7 +20,7 @@ internal class Program
             Console.WriteLine("Press 4 to exit the program.");
             optCheck = int.Parse(Console.ReadLine());
 
-            if (optCheck != 1 || optCheck != 2 || optCheck != 3 || optCheck != 4)
+            if (optCheck > 4 || optCheck < 1)
             {
                 Console.WriteLine("Please only click 1, 2, 3, or 4");
             }
