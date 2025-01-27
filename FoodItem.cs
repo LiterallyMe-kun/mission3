@@ -30,23 +30,37 @@ namespace mission3
                 case 2:
                     
                     int daIndex = 0;
-                    Console.WriteLine("Delete which item? First line printed = 1");
+
+                    
+                    Console.WriteLine("Delete which item? First line printed = 1. If blank, enter 0");
                     foreach (string food in food) 
                     {
                         Console.WriteLine(food); 
                     }
                 bruh:
-                    daIndex = int.Parse(Console.ReadLine()) - 1;
-                    if (daIndex > food.Count || daIndex < 0)
+                    if (int.TryParse(Console.ReadLine(), out daIndex))
                     {
-                        Console.WriteLine("Please enter only a number corresponding to the number of printed lines.");
-                        goto bruh;
+                        daIndex = daIndex - 1;
+                        if (daIndex == -1 )
+                        {
+                            break;
+                        }
+                        if (daIndex > food.Count || daIndex < -1)
+                        {
+                            Console.WriteLine("Please enter only a number corresponding to the number of printed lines.");
+                            goto bruh;
+                        }
+                        else
+                        {
+                            food.RemoveAt(daIndex);
+                            Console.WriteLine("Item Removed");
+                            break;
+                        }
                     }
                     else
                     {
-                        food.RemoveAt(daIndex);
-                        Console.WriteLine("Item Removed");
-                        break;
+                        Console.WriteLine("Enter a valid integer.");
+                        goto bruh;
                     }
                     
                 case 3:

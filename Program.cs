@@ -11,6 +11,8 @@ internal class Program
 
         bool loopCheck = true;
         int optCheck = 0;
+        int cringeDude = 0;
+        
 
         while (loopCheck == true)
         {
@@ -18,14 +20,21 @@ internal class Program
             Console.WriteLine("Press 2 to delete a food item.");
             Console.WriteLine("Press 3 to print all food items.");
             Console.WriteLine("Press 4 to exit the program.");
-            optCheck = int.Parse(Console.ReadLine());
-
-            if (optCheck > 4 || optCheck < 1)
+            if (int.TryParse(Console.ReadLine(), out optCheck))
             {
-                Console.WriteLine("Please only click 1, 2, 3, or 4");
+                if (optCheck > 4 || optCheck < 1)
+                {
+                    Console.WriteLine("Please only click 1, 2, 3, or 4");
+                }
+                else
+                {
+                    fi.FoodLibrary(optCheck);
+                }
             }
             else 
-            {fi.FoodLibrary(optCheck); }
+            {
+                Console.WriteLine("Invalid input. Please enter an intenger"); 
+            }
         }
     }
 }
